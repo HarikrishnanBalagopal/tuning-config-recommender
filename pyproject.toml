@@ -1,5 +1,5 @@
 [project]
-name = "recommender"
+name = "tuning-config-recommender"
 version = "0.1.0"
 authors = [
     { name = "Mehant Kammakomati", email = "mehant.kammakomati2@ibm.com" },
