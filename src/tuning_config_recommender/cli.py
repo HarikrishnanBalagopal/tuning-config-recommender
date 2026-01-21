@@ -7,8 +7,8 @@ from pathlib import Path
 import yaml
 from loguru import logger
 
-from recommender.actions import Action
-from recommender.adapters import FMSAdapter
+from tuning_config_recommender.actions import Action
+from tuning_config_recommender.adapters import FMSAdapter
 
 
 def load_actions_from_folder(folder_path):

@@ -1,4 +1,4 @@
-from recommender.actions import IR, Action, Comment, PatchLevel, PatchType
+from tuning_config_recommender.actions import IR, Action, Comment, PatchLevel, PatchType
 
 ## Rules to add custom actions
 ## 1. Should start with name "Custom_"

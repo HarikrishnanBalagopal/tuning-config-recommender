@@ -1,9 +1,9 @@
-from recommender.utils.data_config import (
+from tuning_config_recommender.utils.data_config import (
     determine_input_and_response_text,
     fetch_chat_template,
     has_any_key_containing,
 )
-from recommender.utils.data_processing import (
+from tuning_config_recommender.utils.data_processing import (
     escape_newlines_in_strings,
     load_training_data,
 )

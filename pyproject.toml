@@ -1,5 +1,9 @@
+[build-system]
+requires = ["setuptools>=61.0", "setuptools-scm>=8.0"]
+build-backend = "setuptools.build_meta"
+
 [project]
-name = "tuning-config-recommender"
+name = "tuning_config_recommender"
 version = "0.1.0"
 authors = [
     { name = "Mehant Kammakomati", email = "mehant.kammakomati2@ibm.com" },
@@ -22,7 +26,8 @@ dependencies = [
     "transformers",
     "jsonpatch",
     "datasets",
-    "fm-training-estimator==0.1.2"
+    "fm-training-estimator==0.1.2",
+    "setuptools==70.0.0"
 ]
 
 [project.optional-dependencies]
@@ -43,9 +48,10 @@ where = ["src"]
 [tool.setuptools.package-data]
 "recommender.knowledge_base" = ["*.csv", "**/*.yaml"]
 
+
 [project.urls]
-Homepage = "https://github.com/foundation-model-stack/tuning-config-recommender"
-Issues = "https://github.com/foundation-model-stack/tuning-config-recommender/issues"
+Homepage = "https://github.com/foundation-model-stack/tuning_config_recommender"
+Issues = "https://github.com/foundation-model-stack/tuning_config_recommender/issues"
 
 [tool.isort]
 profile = "black"

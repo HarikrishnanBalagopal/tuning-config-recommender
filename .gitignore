@@ -3,3 +3,6 @@
 **/recommender.egg-info/
 **/.DS_Store
 **/tmp
+**/build
+**/dist
+**/*.egg-info

@@ -1,10 +1,10 @@
 import math
 
-from recommender.constants import (
+from tuning_config_recommender.constants import (
     DEFAULT_NUM_GPUS_PER_NODE,
     DEFAULT_NUM_NODES,
 )
-from recommender.utils.train_config import (
+from tuning_config_recommender.utils.train_config import (
     get_model_config,
     is_model_type_moe,
     use_kb_for_batch_size,

@@ -4,8 +4,8 @@ from copy import deepcopy
 from loguru import logger
 from tqdm import tqdm
 
-from recommender.actions import ACTIONS, IR, Action
-from recommender.utils import set_difference, set_issubset
+from tuning_config_recommender.actions import ACTIONS, IR, Action
+from tuning_config_recommender.utils import set_difference, set_issubset
 
 
 class RuleEngine:

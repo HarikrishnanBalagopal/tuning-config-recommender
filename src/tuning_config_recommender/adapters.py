@@ -3,14 +3,14 @@ from pathlib import Path
 
 from loguru import logger
 
-from recommender.actions import IR
-from recommender.rule_engine import RuleEngine
-from recommender.utils.adapter_utils import (
+from tuning_config_recommender.actions import IR
+from tuning_config_recommender.rule_engine import RuleEngine
+from tuning_config_recommender.utils.adapter_utils import (
     build_launch_command,
     prepare_ir_for_accelerate,
     write_yaml_preserving_templates,
 )
-from recommender.utils.data_processing import get_model_path
+from tuning_config_recommender.utils.data_processing import get_model_path
 
 
 class Adapter:

@@ -25,14 +25,14 @@ python src/recommender/cli.py --tuning-data-config ./artifacts/test/data_config.
 Custom rules-dir usage
 
 ```
-python src/recommender/cli.py --tuning-data-config ./artifacts/test/data_config.yaml --accelerate-config ./artifacts/test/accelerate_config.yaml --tuning-config ./artifacts/test/tuning_config.yaml --compute-config ./artifacts/test/compute_config.yaml --output-dir ./output --rules-dir custom-rules-dir
+python src/recommender/cli.py --tuning-data-config ./artifacts/test/data_config.yaml --accelerate-config ./artifacts/test/accelerate_config.yaml --tuning-config ./artifacts/test/tuning_config.yaml --compute-config ./artifacts/test/compute_config.yaml --output-dir ./output --rules-dir custom_rules_dir
 ```
 
 Writing custom action rules for custom modification would require following the below
 1. Should start with name "Custom_"
 2. Should subclass from `Action` class
 
-An example can be found at [custom-rules-dir](./custom-rules-dir/).
+An example can be found at [custom_rules_dir](./custom_rules_dir/).
 
 ## Architecture
 
