@@ -266,3 +266,28 @@ class ApplyTrainingOptimization(Action):
         self.json_merge_patches.append(return_ir)
         self.skip = True
         return return_ir
+
+
+
+class ApplySaveStrategy(Action): # could be generic as well
+    def apply(self, ir: IR) -> IR:
+        if self.heuristic_skip(ir) or self.skip:
+            self.skip = True
+            return
+        # TODO: fast kernels are not supported for some optimizer classes
+        # we should either edit this or skip this optimization
+        if ir.train_config.save_strategy == "epoch":
+            # https://github.ibm.com/granite-dot-build/assets/blob/0470c7127c76990b3206b9ab0cf3ba4660ac7276/steps/tuning/validators/save_strategy/validator.py#L73
+            # Example: to delete keys
+            ir.train_config.save_steps = None
+        return_ir = IR(
+            train_config={"padding_free": "huggingface", "use_flash_attn": True},
+            type=PatchType.SYSTEM_PERFORMANCE,
+            level=PatchLevel.SUGGESTION,
+            comment=Comment(
+                "padding_free with flash_attention provides throughput boost and memory savings."
+            ),
+        )
+        self.json_merge_patches.append(return_ir)
+        self.skip = True
+        return return_ir
