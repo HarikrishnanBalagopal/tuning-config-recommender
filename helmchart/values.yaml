@@ -5,14 +5,14 @@ pod:
   volumeMounts:
     enabled: true
     items:
-     - name: pvc name
-       claimName: claim name
-       mountPath: /path
-     - name: pvc name
-       claimName: claim name
-       mountPath: /path
+     - name: vol1
+       claimName: vol1
+       mountPath: /vol1
   imagePullSecrets:
     enabled: true
     items:
-      - name: secret 1
-      - name: secret 2
+      - name: sec1
+      - name: sec2
+  command: |
+    python -m tuning_config_recommender.cli --tuning-data-config ./artifacts/test/tuning_data_config.yaml --accelerate-config ./artifacts/test/accelerate_config.yaml --tuning-config ./artifacts/test/tuning_config.yaml --compute-config ./artifacts/test/compute_config.yaml --output-dir ./output
+svc: false

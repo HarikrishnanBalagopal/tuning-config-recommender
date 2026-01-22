@@ -1,9 +1,9 @@
 apiVersion: workload.codeflare.dev/v1beta2
 kind: AppWrapper
 metadata:
-  name: tcr-tuning-config-recommender
+  name: tcr-tuning-config-recommender-cli
   labels:
-    system/internal: tuning-config-recommender
+    system/internal: tuning-config-recommender-cli
 spec:
   components:
   - podSetInfos:
@@ -13,7 +13,7 @@ spec:
       kind: Pod
       metadata:
         labels:
-          system/internal: tuning-config-recommender
+          system/internal: tuning-config-recommender-cli
         name: tcr-pod
       spec:
         containers:
@@ -24,13 +24,9 @@ spec:
             - -c
           args:
             - |
-              pip install tuning_config_recommender
-              exec uvicorn tuning_config_recommender.api:app --host 0.0.0.0 --port 8000
+              {{ .Values.pod.command }}
           imagePullPolicy: Always
-          name: tuning-config-recommender-cont
-          ports:
-          - containerPort: 3000
-          - containerPort: 8000
+          name: tuning-config-recommender-cli-cont
           resources:
             limits:
               cpu: {{ .Values.pod.cpu }}

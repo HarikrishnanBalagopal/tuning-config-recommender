@@ -1,14 +1,16 @@
+{{- if .Values.svc }}
 apiVersion: v1
 kind: Service
 metadata:
   name: tcr-svc
   labels:
-    system/internal: tuning-config-recommender
+    system/internal: tuning-config-recommender-cli
 spec:
   selector:
-    system/internal: tuning-config-recommender
+    system/internal: tuning-config-recommender-cli
   ports:
   - port: 8000
     protocol: TCP
     targetPort: 8000
   type: ClusterIP
+{{- end}}
