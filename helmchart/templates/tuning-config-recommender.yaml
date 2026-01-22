@@ -1,0 +1,72 @@
+apiVersion: workload.codeflare.dev/v1beta2
+kind: AppWrapper
+metadata:
+  name: tcr-tuning-config-recommender
+  labels:
+    system/internal: tuning-config-recommender
+spec:
+  components:
+  - podSetInfos:
+    - {}
+    template:
+      apiVersion: v1
+      kind: Pod
+      metadata:
+        labels:
+          system/internal: tuning-config-recommender
+        name: tcr-pod
+      spec:
+        containers:
+        - env: null
+          image: {{ .Values.pod.image }}
+          command:
+            - /bin/sh
+            - -c
+          args:
+            - |
+              pip install tuning_config_recommender
+              exec uvicorn tuning_config_recommender.api:app --host 0.0.0.0 --port 8000
+          imagePullPolicy: Always
+          name: tuning-config-recommender-cont
+          ports:
+          - containerPort: 3000
+          - containerPort: 8000
+          resources:
+            limits:
+              cpu: {{ .Values.pod.cpu }}
+              memory: {{ .Values.pod.mem }}
+            requests:
+              cpu: {{ .Values.pod.cpu }}
+              memory: {{ .Values.pod.mem }}
+          securityContext:
+            runAsNonRoot: false
+            runAsUser: 0
+          {{- if .Values.pod.volumeMounts.enabled }}
+          volumeMounts:
+          {{- range .Values.pod.volumeMounts.items }}
+            - name: {{ .name }}
+              mountPath: {{ .mountPath }}
+              {{- if hasKey . "subPath" }}
+              subPath: {{ .subPath }}
+              {{- end }}
+              {{- if hasKey . "readOnly" }}
+              readOnly: {{ .readOnly }}
+              {{- end }}
+          {{- end }}
+          {{- end }}
+        {{- if .Values.pod.imagePullSecrets.enabled }}
+        imagePullSecrets:
+        {{- range .Values.pod.imagePullSecrets.items }}
+        - name: {{ .name }}
+        {{- end }}
+        {{- end }}
+        restartPolicy: Always
+        serviceAccountName: gdr
+        {{- if .Values.pod.volumeMounts.enabled }}
+        volumes:
+        {{- range .Values.pod.volumeMounts.items }}
+        - name: {{ .name }}
+          persistentVolumeClaim:
+            claimName: {{ .claimName }}
+        {{- end }}
+        {{- end }}

@@ -1,0 +1,18 @@
+pod:
+  cpu: "4"
+  mem: "32Gi"
+  image: image
+  volumeMounts:
+    enabled: true
+    items:
+     - name: pvc name
+       claimName: claim name
+       mountPath: /path
+     - name: pvc name
+       claimName: claim name
+       mountPath: /path
+  imagePullSecrets:
+    enabled: true
+    items:
+      - name: secret 1
+      - name: secret 2

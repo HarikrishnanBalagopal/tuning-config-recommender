@@ -25,13 +25,27 @@ python lib_usage.py
 ## CLI usage
 
 ```
-python src/recommender/cli.py --tuning-data-config ./artifacts/test/tuning_tuning_data_config.yaml --accelerate-config ./artifacts/test/accelerate_config.yaml --tuning-config ./artifacts/test/tuning_config.yaml --compute-config ./artifacts/test/compute_config.yaml --output-dir ./output
+python src/tuning_config_recommender/cli.py --tuning-data-config ./artifacts/test/tuning_tuning_data_config.yaml --accelerate-config ./artifacts/test/accelerate_config.yaml --tuning-config ./artifacts/test/tuning_config.yaml --compute-config ./artifacts/test/compute_config.yaml --output-dir ./output
+```
+
+or using the package
+
+```
+```
+python tuning_config_recommender.cli --tuning-data-config ./artifacts/test/tuning_tuning_data_config.yaml --accelerate-config ./artifacts/test/accelerate_config.yaml --tuning-config ./artifacts/test/tuning_config.yaml --compute-config ./artifacts/test/compute_config.yaml --output-dir ./output
+```
 ```
 
 Custom rules-dir usage
 
 ```
-python src/recommender/cli.py --tuning-data-config ./artifacts/test/tuning_data_config.yaml --accelerate-config ./artifacts/test/accelerate_config.yaml --tuning-config ./artifacts/test/tuning_config.yaml --compute-config ./artifacts/test/compute_config.yaml --output-dir ./output --rules-dir custom_rules_dir
+python src/tuning_config_recommender/cli.py --tuning-data-config ./artifacts/test/tuning_data_config.yaml --accelerate-config ./artifacts/test/accelerate_config.yaml --tuning-config ./artifacts/test/tuning_config.yaml --compute-config ./artifacts/test/compute_config.yaml --output-dir ./output --rules-dir custom_rules_dir
+```
+
+or using the package as
+
+```
+python tuning_config_recommender.cli --tuning-data-config ./artifacts/test/tuning_data_config.yaml --accelerate-config ./artifacts/test/accelerate_config.yaml --tuning-config ./artifacts/test/tuning_config.yaml --compute-config ./artifacts/test/compute_config.yaml --output-dir ./output --rules-dir custom_rules_dir
 ```
 
 Writing custom action rules for custom modification would require following the below
