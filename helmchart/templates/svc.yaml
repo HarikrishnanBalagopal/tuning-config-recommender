@@ -4,10 +4,10 @@ kind: Service
 metadata:
   name: tcr-svc
   labels:
-    system/internal: tuning-config-recommender-cli
+    system/internal: tuning-config-recommender-any
 spec:
   selector:
-    system/internal: tuning-config-recommender-cli
+    system/internal: tuning-config-recommender-any
   ports:
   - port: 8000
     protocol: TCP

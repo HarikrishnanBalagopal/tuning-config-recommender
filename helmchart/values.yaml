@@ -13,6 +13,13 @@ pod:
     items:
       - name: sec1
       - name: sec2
+  # for CLI usage
   command: |
     python -m tuning_config_recommender.cli --tuning-data-config ./artifacts/test/tuning_data_config.yaml --accelerate-config ./artifacts/test/accelerate_config.yaml --tuning-config ./artifacts/test/tuning_config.yaml --compute-config ./artifacts/test/compute_config.yaml --output-dir ./output
+  # for API usage
+  # command: |
+  #   uvicorn tuning_config_recommender.api:app --host 0.0.0.0 --port 8000
+# for CLI usage
 svc: false
+# for API usage
+# svc: true
